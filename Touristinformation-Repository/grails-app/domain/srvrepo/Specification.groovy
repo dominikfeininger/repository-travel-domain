@@ -1,5 +1,7 @@
 package srvrepo
 
+import srvrepo.Service
+
 class Specification {
 	
 	def scaffold = true
@@ -7,7 +9,6 @@ class Specification {
 	static belongsTo = [service : Service]
 	
 	String name
-
 	String input
 	String output
 	String precondition
@@ -15,9 +16,8 @@ class Specification {
 
 	String description
 	
-
-	Specification(String tmpName){
-		this.name = tmpName
+	static constraints = {
+		name(unique: true)
 	}
 	
 

@@ -23,12 +23,16 @@ class SpecificationController {
 
 	def save = {
 		def specificationInstance = new Specification(params)
-		redirect(action: "show")
+		
+		if (specificationInstance.save(flush: true)) {
+			redirect(action: "show", id: specificationInstance.id)
+		}else {
+			render(view: "create", model: [specificationInstance: specificationInstance])
+		}
+	
 	}
 
-	def show = {
-		redirect(action: "list")
-	}
+	def show = { redirect(action: "list") }
 
 	def edit = {
 		def specificationInstance = Specification.get(params.id)

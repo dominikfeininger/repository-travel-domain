@@ -44,14 +44,17 @@ public class PlaceHelper {
 
 		def tmpService = Service.findByName(serviceName)
 		if((tmpService != null) && (tmpService.activated == true)){
-			System.out.println("tmpService.specifications.name" + tmpService.specifications.name);
-			//System.out.println("not null!! " + tmpService.url);
+			//System.out.println("tmpService.specifications.name" + tmpService.specifications.name);
 			tmpService.calls ++
 			tmpService.save(flush:true)
 		}else{
 			//System.out.println("NULL " + serviceName);
 			if(tmpService.specifications.name != null){
 				//go for another service
+				//find another service with the same specifications like the first service and return
+				//TODO:
+				def tmp2Service = Service.findBySpecification(tmpService.specifications)
+				return tmp2Service
 			}else{
 				tmpService.name = null
 			}

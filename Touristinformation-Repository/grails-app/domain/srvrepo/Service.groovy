@@ -1,22 +1,19 @@
 package srvrepo
 
 import srvrepo.Vendor
+import srvrepo.Specification
 
 class Service {
 	
 	def scaffold = true 
 	
 	static belongsTo = [vendor: Vendor]
-	static hasMnay = [specifications: Specification]
-	
+	static hasMany = [specifications: Specification]
+
 	String name
 	URL url
 	Boolean activated
 	int calls
-
-    static constraints = {
-		name(unique: true)
-    }
 	
 	Service(){
 		
