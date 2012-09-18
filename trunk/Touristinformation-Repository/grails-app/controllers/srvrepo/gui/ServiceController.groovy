@@ -19,6 +19,7 @@ class ServiceController {
         serviceInstance.properties = params
         return [serviceInstance: serviceInstance]
     }
+	
     def save = {
 		def specifications = []
 		def vendor = Vendor.get(params.vendor)
