@@ -99,7 +99,7 @@ class RestaurantController {
 				String uRL = "$service.url?myLat=$myLatitude&myLon=$myLongitude&radius=$range&cuisine=$cuisine"
 				//System.out.println(uRL);
 				//request
-				def resp = PlaceHelper.makeHTTPRequestWithXML(uRL)
+				def resp = PlaceHelper.makeHTTPRequestWithJson(uRL)
 				//render result
 				//System.out.println(resp.data.toString())
 				render(text:resp.toString())
@@ -109,7 +109,7 @@ class RestaurantController {
 				return
 			}
 		}catch (Exception){
-			render(text:PlaceHelper.getServerCode371XML())
+			render(text:PlaceHelper.getServerCode371JSON())
 		}
 	}
 }

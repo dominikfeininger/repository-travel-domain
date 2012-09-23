@@ -1,8 +1,10 @@
 package srvrepo.touristInformation
 
 import srvrepo.touristInformation.PlaceHelper
+import groovy.xml.*
+import grails.converters.XML
+import org.codehaus.groovy.grails.web.xml.*
 import groovyx.net.http.*
-import grails.converters.JSON
 import srvrepo.touristInformationModel.CulturePlace
 import srvrepo.Service
 
@@ -18,7 +20,7 @@ class CulturePlaceController {
 			def service = PlaceHelper.findService(params.serviceName)
 			if(service == null){
 				//Service unavailable
-				render(text:PlaceHelper.getServerCode351JSON())
+				render(PlaceHelper.getServerCode351XML() as XML, contentType:"text/xml")
 				return
 			}
 			//parse url
@@ -34,14 +36,14 @@ class CulturePlaceController {
 				def resp = PlaceHelper.makeHTTPRequestWithXML(uRL)
 				//render result
 				//System.out.println(resp.data.toString())
-				render(text:resp.toString())
+				render(resp.toString() as XML, contentType:"text/xml")
 			}else{
 				//Parameter Error
-				render(text: PlaceHelper.getServerCode361JSON())
+				render(PlaceHelper.getServerCode361XML() as XML, contentType:"text/xml")
 				return
 			}
 		}catch (Exception){
-			render(text:PlaceHelper.getServerCode371XML())
+			render(text: PlaceHelper.getServerCode371XML() as String, contentType:"text/xml", encoding:"UTF-8")
 		}
 	}
 
@@ -51,7 +53,7 @@ class CulturePlaceController {
 			def service = PlaceHelper.findService(params.serviceName)
 			if(service == null){
 				//Service unavailable
-				render(text:PlaceHelper.getServerCode351JSON())
+				render(PlaceHelper.getServerCode351XML() as XML, contentType:"text/xml")
 				return
 			}
 			//parse url
@@ -64,17 +66,17 @@ class CulturePlaceController {
 			if((myLatitude != null) && (myLongitude != null) && (range != null) && (kind != null)){
 				//System.out.println(uRL);
 				//request
-				def resp = PlaceHelper.makeHTTPRequestWithJson(uRL)
+				def resp = PlaceHelper.makeHTTPRequestWithXML(uRL)
 				//render result
 				//System.out.println(resp.data.toString())
-				render(text:resp.toString())
+				render(resp.toString() as XML, contentType:"text/xml")
 			}else{
 				//Parameter Error
-				render(text: PlaceHelper.getServerCode361JSON())
+				render( PlaceHelper.getServerCode361XML() as XML, contentType:"text/xml")
 				return
 			}
 		}catch (Exception){
-			render(text:PlaceHelper.getServerCode371JSON())
+			render(PlaceHelper.getServerCode371XML() as XML, contentType:"text/xml")
 		}
 	}
 
@@ -84,7 +86,7 @@ class CulturePlaceController {
 			def service = PlaceHelper.findService(params.serviceName)
 			if(service == null){
 				//Service unavailable
-				render(text:PlaceHelper.getServerCode351JSON())
+				render(PlaceHelper.getServerCode351XML() as XML, contentType:"text/xml")
 				return
 			}
 			//parse url
@@ -97,17 +99,17 @@ class CulturePlaceController {
 			if((myLatitude != null) && (myLongitude != null) && (duration != null) && (kind != null)){
 				//System.out.println(uRL);
 				//request
-				def resp = PlaceHelper.makeHTTPRequestWithJson(uRL)
+				def resp = PlaceHelper.makeHTTPRequestWithXML(uRL)
 				//render result
 				//System.out.println(resp.data.toString())
-				render(text:resp.toString())
+				render(resp.toString() as XML, contentType:"text/xml")
 			}else{
 				//Parameter Error
-				render(text: PlaceHelper.getServerCode361JSON())
+				render( PlaceHelper.getServerCode361XML() as XML, contentType:"text/xml")
 				return
 			}
 		}catch (Exception){
-			render(text:PlaceHelper.getServerCode371JSON())
+			render(PlaceHelper.getServerCode371XML() as XML, contentType:"text/xml")
 		}
 	}
 
@@ -117,7 +119,7 @@ class CulturePlaceController {
 			def service = PlaceHelper.findService(params.serviceName)
 			if(service == null){
 				//Service unavailable
-				render(text:PlaceHelper.getServerCode351JSON())
+				render(PlaceHelper.getServerCode351XML() as XML, contentType:"text/xml")
 				return
 			}
 			//parse url
@@ -130,14 +132,14 @@ class CulturePlaceController {
 				def resp = PlaceHelper.makeHTTPRequestWithXML(uRL)
 				//render result
 				//System.out.println(resp.data.toString())
-				render(text:resp.toString())
+				render(resp.toString() as XML, contentType:"text/xml")
 			}else{
 				//Parameter Error
-				render(text: PlaceHelper.getServerCode361JSON())
+				render( PlaceHelper.getServerCode361v() as XML, contentType:"text/xml")
 				return
 			}
 		}catch (Exception){
-			render(text:PlaceHelper.getServerCode371XML())
+			render(PlaceHelper.getServerCode371XML() as XML, contentType:"text/xml")
 		}
 	}
 }
