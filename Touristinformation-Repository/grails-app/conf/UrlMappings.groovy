@@ -4,8 +4,8 @@ class UrlMappings {
 		"/gui/$controller/$action?/$id?" { }
 		
 		//general mobile app
-		"/touristInformation/$controller/$action?/$id?" { }
-		"/touristInformation/$controller/$action" { }
+		"/$controller/$action?/$id?" { }
+		"/$controller/$action" { }
 
 		"/"(view:"/index")
 		"500"(view:'/error')
