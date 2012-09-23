@@ -1,6 +1,9 @@
 package srvrepo.touristInformation
 
 import groovyx.net.http.*
+import groovy.xml.*
+import grails.converters.XML
+import org.codehaus.groovy.grails.web.xml.*
 import grails.converters.JSON
 import srvrepo.touristInformationModel.Cinema
 import srvrepo.Service
@@ -115,7 +118,7 @@ class CinemaController {
 			def service = PlaceHelper.findService(params.serviceName)
 			if(service == null){
 				//Service unavailable
-				render(text:PlaceHelper.getServerCode351JSON())
+				render(PlaceHelper.getServerCode351XML() as XML, contentType:"text/xml")
 				return
 			}
 			//parse url
@@ -128,14 +131,14 @@ class CinemaController {
 				def resp = PlaceHelper.makeHTTPRequestWithXML(uRL)
 				//render result
 				//System.out.println(resp.data.toString())
-				render(text:resp.toString())
+				render(resp.toString() as XML, contentType:"text/xml")
 			}else{
 				//Parameter Error
-				render(text: PlaceHelper.getServerCode361JSON())
+				render(PlaceHelper.getServerCode361XML() as XML, contentType:"text/xml")
 				return
 			}
 		}catch (Exception){
-			render(text:PlaceHelper.getServerCode371XML())
+			render(PlaceHelper.getServerCode371XML() as XML, contentType:"text/xml")
 		}
 	}
 }

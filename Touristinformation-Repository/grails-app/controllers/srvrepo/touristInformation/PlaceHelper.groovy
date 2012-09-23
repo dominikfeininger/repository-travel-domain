@@ -1,7 +1,6 @@
 package srvrepo.touristInformation;
 
 import groovyx.net.http.*
-import srvrepo.touristInformation.PlaceHelper
 import grails.converters.JSON
 import srvrepo.touristInformationModel.Restaurant
 import srvrepo.Service
@@ -12,9 +11,9 @@ public class PlaceHelper {
 	public static String serverCode361JSON = "{\"server_code\":\"361\", \"message\":\"Parameter Error !\"}"
 	public static String serverCode371JSON = "{\"server_code\":\"371\", \"message\":\"Connection Error !\"}"
 
-	public static String serverCode361XML = "<?xml version=\"1.0\"?><node><server_code>361</server_code><messgae>Parameter Error !</messgae></node>"
-	public static String serverCode351XML = "<?xml version=\"1.0\"?><node><server_code>351</server_code><messgae>Failed, Service Unavailable !</messgae></node>"
-	public static String serverCode371XML = "<?xml version=\"1.0\"?><node><server_code>371</server_code><messgae>Connection Error !</messgae></node>"
+	public static String serverCode361XML = "<?xml version=\"1.0\"?><node><server_code>361</server_code><message>Parameter Error !</message></node>"
+	public static String serverCode351XML = "<?xml version=\"1.0\"?><node><server_code>351</server_code><message>Failed, Service Unavailable !</message></node>"
+	public static String serverCode371XML = "<?xml version=\"1.0\"?><node><server_code>371</server_code><message>Connection Error !</message></node>"
 
 	static String getServerCode351XML(){
 		return serverCode351XML
