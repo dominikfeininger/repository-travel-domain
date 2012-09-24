@@ -118,7 +118,7 @@ class CinemaController {
 			def service = PlaceHelper.findService(params.serviceName)
 			if(service == null){
 				//Service unavailable
-				render(PlaceHelper.getServerCode351XML() as XML, contentType:"text/xml")
+				render(text: PlaceHelper.getServerCode351XML() as String, contentType:"text/xml", encoding:"UTF-8")
 				return
 			}
 			//parse url
@@ -131,14 +131,14 @@ class CinemaController {
 				def resp = PlaceHelper.makeHTTPRequestWithXML(uRL)
 				//render result
 				//System.out.println(resp.data.toString())
-				render(resp.toString() as XML, contentType:"text/xml")
+				render(text: resp.toString() as String, contentType:"text/xml", encoding:"UTF-8")
 			}else{
 				//Parameter Error
-				render(PlaceHelper.getServerCode361XML() as XML, contentType:"text/xml")
+				render(text: PlaceHelper.getServerCode361XML() as String, contentType:"text/xml", encoding:"UTF-8")
 				return
 			}
 		}catch (Exception){
-			render(PlaceHelper.getServerCode371XML() as XML, contentType:"text/xml")
+			render(text: PlaceHelper.getServerCode371XML() as String, contentType:"text/xml", encoding:"UTF-8")
 		}
 	}
 }
